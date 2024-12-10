@@ -1,0 +1,144 @@
+body {
+  margin:0;
+  padding:0;
+  background:#000;
+  color:#00ff7f;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size:16px;
+  line-height:1.5;
+  position: relative;
+  overflow:hidden;
+}
+
+/* Noise overlay */
+.noise-overlay {
+  pointer-events: none;
+  position: fixed; 
+  top:0; left:0; 
+  width:100vw; height:100vh;
+  background-image: url('data:image/svg+xml;utf8,<svg width="1" height="1"xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%23ffffff" opacity="0.03"/></svg>');
+  background-repeat: repeat;
+  z-index:9999;
+  mix-blend-mode: multiply;
+}
+
+/* Scanlines for CRT effect */
+.scanlines {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05),
+    rgba(0,0,0,0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: scrollLines 5s linear infinite;
+  z-index:9998;
+}
+
+@keyframes scrollLines {
+  0% { background-position:0 0; }
+  100% { background-position:0 100%; }
+}
+
+.container {
+  max-width:600px;
+  margin:0 auto;
+  padding:40px 20px;
+  text-align:center;
+  position: relative;
+  z-index:1000;
+  border:2px solid #00ff7f;
+  background: rgba(0,0,0,0.75);
+  box-sizing:border-box;
+  margin-top:10vh;
+  animation: borderAnim 3s linear infinite;
+}
+
+@keyframes borderAnim {
+  0% { box-shadow: 0 0 10px #00ff7f, inset 0 0 5px #00ff7f; }
+  50% { box-shadow: 0 0 20px #00ff7f, inset 0 0 10px #00ff7f; }
+  100% { box-shadow: 0 0 10px #00ff7f, inset 0 0 5px #00ff7f; }
+}
+
+/* Profile container */
+.profile-container {
+  position: relative;
+  display:inline-block;
+  margin-bottom:20px;
+}
+
+/* Profile image styling */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border:2px solid #00ff7f;
+  border-radius:50%;
+}
+
+/* Avatar decoration overlay */
+.avatar-decoration {
+  position:absolute;
+  top:0;
+  left:0;
+  width:150px; 
+  height:150px; 
+  border-radius:50%;
+}
+
+/* Name and cursor styling */
+.name {
+  font-size:1.4rem;
+  margin-bottom:20px;
+  display:inline-block;
+  position:relative;
+}
+
+.cursor {
+  display:inline-block;
+  background:#00ff7f;
+  width:8px;
+  height:18px;
+  vertical-align:middle;
+  margin-left:5px;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { background:#00ff7f; }
+  51%, 100% { background:transparent; }
+}
+
+.tagline {
+  font-size:0.9rem;
+  color:#00ff7f;
+  margin-bottom:30px;
+  padding:0 20px;
+  white-space:pre;
+}
+
+.info {
+  font-size:0.9rem;
+  color:#00ff7f;
+  margin-bottom:30px;
+  padding:0 20px;
+}
+
+.links {
+  font-size:0.9rem;
+}
+
+.links a {
+  color:#00ff7f;
+  text-decoration:none;
+  padding:0 5px;
+}
+
+.links a:hover {
+  text-decoration:underline;
+}
