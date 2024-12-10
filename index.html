@@ -1,101 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>bio</title>
-<link rel="stylesheet" href="styles.css"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 </head>
 <body>
-<div class="noise-overlay"></div>
-<div class="scanlines"></div>
-
-<div class="container">
-  <div class="profile-container">
-    <img class="profile-image" 
-         src="https://cdn.discordapp.com/avatars/1253192539574374513/3df2cbe798438dae95e8e1b5e4ed9e4f.webp" 
-         alt="PFP">
-    <img class="avatar-decoration" 
-         src="https://cdn.discordapp.com/avatar-decoration-presets/a_7f863078aee4932cd50ee4e3b55d3035.png" 
-         alt="dec">
-  </div>
-
-  <h1 class="name"></h1>
-  <p class="tagline"></p>
-
-  <p class="info">
-    A fullstack developer who loves tinkering with obscure frameworks,
-    crafting minimalistic web experiences, and brewing the perfect cup of coffee.
-  </p>
+  <div id="tsparticles"></div>
+  <div class="noise-overlay"></div>
+  <div class="scanlines"></div>
+  <div class="gradient-overlay"></div>
   
-  <p class="links">
-    [ <a href="mailto:youremail@example.com">email</a> ]  
-    [ <a href="https://github.com/yourusername" target="_blank">github</a> ]  
-    [ <a href="https://twitter.com/yourhandle" target="_blank">twitter</a> ]
-  </p>
-</div>
-
-<script>
-const nameEl = document.querySelector('.name');
-const cursorChar = '_';
-const nameList = ["bog", "sarah", "trans and lesbian", "loving my gf <3"];
-let nameIndex = 0; 
-let prefix = "I am ";
-let deleting = false;
-let currentName = nameList[nameIndex];
-let fullText = prefix + currentName;
-let charIndex = 0;
-
-let taglineText = " fullstack developer • ascii art enthusiast • coffee lover";
-const taglineEl = document.querySelector('.tagline');
-let taglineIndex = 0;
-
-nameEl.textContent = "";
-nameEl.insertAdjacentHTML('beforeend', `<span class="cursor">${cursorChar}</span>`);
-
-function typeName() {
-  const cursor = nameEl.querySelector('.cursor');
-  if (!deleting) {
-    if (charIndex < fullText.length) {
-      nameEl.textContent = fullText.slice(0, charIndex + 1);
-      nameEl.appendChild(cursor);
-      charIndex++;
-      setTimeout(typeName, 100);
-    } else {
-      setTimeout(() => {
-        deleting = true;
-        typeName();
-      }, 800);
-    }
-  } else {
-    if (charIndex > prefix.length) {
-      nameEl.textContent = fullText.slice(0, charIndex - 1);
-      nameEl.appendChild(cursor);
-      charIndex--;
-      setTimeout(typeName, 50);
-    } else {
-      nameIndex = (nameIndex + 1) % nameList.length;
-      currentName = nameList[nameIndex];
-      fullText = prefix + currentName;
-      deleting = false;
-      setTimeout(typeName, 400);
-    }
-  }
-}
-
-function typeTagline() {
-  if (taglineIndex < taglineText.length) {
-    taglineEl.textContent += taglineText.charAt(taglineIndex);
-    taglineIndex++;
-    setTimeout(typeTagline, 50);
-  }
-}
-
-typeName();
-typeTagline();
-</script>
-
+  <div class="container">
+    <div class="profile-container">
+      <img class="avatar-decoration" 
+           src="https://cdn.discordapp.com/avatar-decoration-presets/a_7f863078aee4932cd50ee4e3b55d3035.png" 
+           alt="Decoration">
+      <img class="profile-image" 
+           src="https://cdn.discordapp.com/avatars/1253192539574374513/3df2cbe798438dae95e8e1b5e4ed9e4f.webp" 
+           alt="Profile Picture">
+    </div>
+  
+    <h1 class="name"></h1>
+    <p class="pronouns">she / her</p>
+    <p class="info">
+      Haiii, I'm Bog & I make game sites. My newest project is called Truffled, check it out sometime!
+    </p>
+    
+    <p class="links">
+      [ <a href="https://truffled.lol" target="_blank">Site</a> ]  
+      [ <a href="https://github.com/aukak" target="_blank">GitHub</a> ]  
+    </p>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
